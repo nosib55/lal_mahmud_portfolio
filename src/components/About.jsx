@@ -122,7 +122,7 @@ const About = () => {
 
             {/* Experience Number */}
             <motion.div whileHover={{ scale: 1.05 }} className="text-center">
-              <p className="text-5xl font-extrabold text-blue-500">1-</p>
+              <p className="text-5xl font-extrabold text-blue-500">1</p>
               <p className="text-gray-500 dark:text-gray-400">Years Experience</p>
             </motion.div>
 

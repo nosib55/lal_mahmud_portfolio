@@ -26,6 +26,15 @@ const Skills = () => {
     { name: "Git & GitHub", icon: <FaGitAlt className="text-4xl text-orange-600" />, level: 85, color: "from-orange-500 to-red-600" },
   ]
 
+  const softSkills = [
+    { name: "Communication", desc: "Clear and professional communication with clients and team members." },
+    { name: "Teamwork", desc: "Works collaboratively with teams to achieve project goals." },
+    { name: "Problem Solving", desc: "Thinks logically to solve coding and UI/UX challenges." },
+    { name: "Time Management", desc: "Manages tasks efficiently to meet deadlines." },
+    { name: "Creativity", desc: "Brings fresh and unique ideas to frontend design." },
+    { name: "Adaptability", desc: "Learns new technologies quickly and applies them effectively." },
+  ]
+
   const [activeIndex, setActiveIndex] = useState(null)
 
   const toggleSkill = (index) => {
@@ -34,7 +43,7 @@ const Skills = () => {
 
   return (
     <section ref={ref} className="w-full max-w-7xl mx-auto py-20">
-      
+
       {/* Section Header */}
       <motion.div 
         className="text-left mb-16"
@@ -44,27 +53,19 @@ const Skills = () => {
       >
         <motion.div 
           className="inline-flex items-center gap-2 bg-secondary/20 px-4 py-2 rounded-full mb-6"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={isInView ? { opacity: 1, scale: 1 } : {}}
-          transition={{ duration: 0.5 }}
         >
           <span className="w-2 h-2 bg-secondary rounded-full animate-pulse" />
-          <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-            My Skills
-          </span>
+          <span className="text-sm font-medium text-gray-700 dark:text-gray-300">My Skills</span>
         </motion.div>
-        
+
         <motion.h2 
-          className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white leading-tight mb-4"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white leading-tight"
         >
           Skills that power my <span className="text-secondary">development journey</span>
         </motion.h2>
       </motion.div>
 
-      {/* Skills Grid */}
+      {/* Technical Skills */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
         {skills.map((skill, index) => {
@@ -75,48 +76,32 @@ const Skills = () => {
               key={index}
               onClick={() => toggleSkill(index)}
               className="group relative cursor-pointer bg-white dark:bg-gray-800 p-6 rounded-3xl shadow-lg 
-                         hover:shadow-2xl transition-all duration-300 border-2 border-transparent 
-                         hover:border-secondary overflow-hidden"
+                         border-2 border-transparent hover:border-secondary transition-all overflow-hidden"
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               whileHover={{ y: -10, scale: 1.02 }}
             >
-              {/* Hover Light */}
+
               <motion.div 
-                className={`absolute inset-0 bg-gradient-to-br ${skill.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}
+                className={`absolute inset-0 bg-gradient-to-br ${skill.color} opacity-0 group-hover:opacity-10 transition-all`}
               />
 
               <div className="relative z-10">
-
-                {/* Header */}
                 <div className="flex items-center gap-4 mb-6">
-                  
-                  {/* Icon */}
                   <motion.div 
-                    className="w-16 h-16 bg-gradient-to-br from-secondary/20 to-primary/20 
-                               rounded-2xl flex items-center justify-center"
+                    className="w-16 h-16 bg-gradient-to-br from-secondary/20 to-primary/20 rounded-2xl flex items-center justify-center"
                     whileHover={{ scale: 1.2 }}
-                    transition={{ type: "spring", stiffness: 300 }}
                   >
                     {skill.icon}
                   </motion.div>
 
                   <div>
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-secondary transition-colors">
-                      {skill.name}
-                    </h3>
-
-                    {/* Status Text */}
-                    {!isOpen && (
-                      <p className="text-sm text-gray-400 dark:text-gray-500 italic">
-                        Click to reveal level
-                      </p>
-                    )}
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white">{skill.name}</h3>
+                    {!isOpen && <p className="text-sm text-gray-400 italic">Click to reveal level</p>}
                   </div>
                 </div>
 
-                {/* Hidden Meter */}
                 {isOpen && (
                   <>
                     <motion.div 
@@ -127,7 +112,7 @@ const Skills = () => {
                       {skill.level}%
                     </motion.div>
 
-                    <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 overflow-hidden">
+                    <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
                       <motion.div 
                         className={`h-full bg-gradient-to-r ${skill.color} rounded-full`}
                         initial={{ width: 0 }}
@@ -141,6 +126,39 @@ const Skills = () => {
             </motion.div>
           )
         })}
+
+      </div>
+
+      {/* Soft Skills Section */}
+      <motion.div
+        className="mt-20 mb-10"
+        initial={{ opacity: 0, y: 40 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6 }}
+      >
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
+          Soft Skills
+        </h2>
+      </motion.div>
+
+      {/* Soft Skills Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        {softSkills.map((skill, index) => (
+          <motion.div
+            key={index}
+            className="bg-white dark:bg-gray-800 p-6 rounded-3xl shadow-lg 
+                       hover:shadow-2xl border border-transparent hover:border-secondary 
+                       transition-all duration-300"
+            initial={{ opacity: 0, y: 40 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            whileHover={{ y: -8, scale: 1.02 }}
+          >
+            <h3 className="text-xl font-bold text-secondary mb-2">{skill.name}</h3>
+            <p className="text-gray-600 dark:text-gray-400">{skill.desc}</p>
+          </motion.div>
+        ))}
 
       </div>
     </section>

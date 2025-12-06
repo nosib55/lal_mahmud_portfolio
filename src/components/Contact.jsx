@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion"
 import { useRef, useState } from "react"
-import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa"
+import { FaGithub, FaLinkedin, FaFacebook } from "react-icons/fa"
 
 const Contact = () => {
   const ref = useRef(null)
@@ -8,28 +8,36 @@ const Contact = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [showSuccess, setShowSuccess] = useState(false)
+  const [error, setError] = useState(false)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setError(false)
 
     const formData = new FormData(e.target)
 
     try {
-      const response = await fetch("https://formsubmit.co/YOUR_EMAIL_HERE", {
+      const response = await fetch("https://formsubmit.co/lalmahmud092@gmail.com", {
         method: "POST",
         body: formData,
         headers: { Accept: "application/json" }
       })
 
-      if (response.ok) {
+      const data = await response.json()
+
+      if (data.success === "true") {
         setShowSuccess(true)
         e.target.reset()
         setTimeout(() => setShowSuccess(false), 4000)
+      } else {
+        setError(true)
       }
-    } finally {
-      setIsSubmitting(false)
+    } catch (err) {
+      setError(true)
     }
+
+    setIsSubmitting(false)
   }
 
   return (
@@ -49,7 +57,7 @@ const Contact = () => {
         </p>
       </motion.div>
 
-      {/* Form */}
+      {/* FORM */}
       <motion.form
         onSubmit={handleSubmit}
         className="bg-[#0f2828] rounded-3xl p-8 shadow-2xl space-y-6 border border-gray-700"
@@ -57,11 +65,13 @@ const Contact = () => {
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6, delay: 0.2 }}
       >
-        {/* Hidden settings */}
+
+        {/* HIDDEN FORMSETTINGS */}
         <input type="hidden" name="_subject" value="New message from portfolio" />
         <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_next" value="https://your-netlify-site.netlify.app/contact-success" />
 
-        {/* Name Field */}
+        {/* NAME */}
         <div>
           <label className="block text-sm text-gray-400 mb-2">Name</label>
           <input
@@ -69,12 +79,12 @@ const Contact = () => {
             name="name"
             required
             placeholder="Your full name"
-            className="w-full px-4 py-3 bg-[#0d1f1f] border border-gray-700 rounded-lg text-white 
+            className="w-full px-4 py-3 bg-[#0d1f1f] border border-gray-700 rounded-lg text-white
             focus:border-secondary outline-none transition-all"
           />
         </div>
 
-        {/* Email Field */}
+        {/* EMAIL */}
         <div>
           <label className="block text-sm text-gray-400 mb-2">Email</label>
           <input
@@ -82,12 +92,12 @@ const Contact = () => {
             name="email"
             required
             placeholder="you@example.com"
-            className="w-full px-4 py-3 bg-[#0d1f1f] border border-gray-700 rounded-lg text-white 
+            className="w-full px-4 py-3 bg-[#0d1f1f] border border-gray-700 rounded-lg text-white
             focus:border-secondary outline-none transition-all"
           />
         </div>
 
-        {/* Message Field */}
+        {/* MESSAGE */}
         <div>
           <label className="block text-sm text-gray-400 mb-2">Message</label>
           <textarea
@@ -95,19 +105,26 @@ const Contact = () => {
             rows="5"
             required
             placeholder="Write your message..."
-            className="w-full px-4 py-3 bg-[#0d1f1f] border border-gray-700 rounded-lg text-white 
+            className="w-full px-4 py-3 bg-[#0d1f1f] border border-gray-700 rounded-lg text-white
             focus:border-secondary resize-none outline-none transition-all"
           ></textarea>
         </div>
 
-        {/* Success Message */}
+        {/* SUCCESS */}
         {showSuccess && (
           <div className="bg-secondary/20 border border-secondary text-secondary px-4 py-3 rounded-lg text-center font-semibold">
             ✓ Your message has been sent!
           </div>
         )}
 
-        {/* Submit Button */}
+        {/* ERROR */}
+        {error && (
+          <div className="bg-red-500/20 border border-red-400 text-red-400 px-4 py-3 rounded-lg text-center font-semibold">
+            ✗ Something went wrong. Try again.
+          </div>
+        )}
+
+        {/* BUTTON */}
         <motion.button
           type="submit"
           disabled={isSubmitting}
@@ -119,23 +136,23 @@ const Contact = () => {
         </motion.button>
       </motion.form>
 
-      {/* Social Icons */}
+      {/* SOCIAL ICONS */}
       <motion.div
         className="flex justify-center gap-4 mt-10"
         initial={{ opacity: 0 }}
         animate={isInView ? { opacity: 1 } : {}}
         transition={{ duration: 0.6 }}
       >
-        <a href="https://github.com/mahmud014" target="_blank" className="w-12 h-12 flex items-center justify-center bg-white dark:bg-gray-800 rounded-full shadow-lg hover:bg-secondary hover:text-primary transition-all">
+        <a href="https://github.com/nosib55" target="_blank" className="social-btn">
           <FaGithub className="text-xl" />
         </a>
 
-        <a href="https://www.linkedin.com/in/shukurmahmud/" target="_blank" className="w-12 h-12 flex items-center justify-center bg-white dark:bg-gray-800 rounded-full shadow-lg hover:bg-secondary hover:text-primary transition-all">
+        <a href="https://www.linkedin.com/in/lalmahmud" target="_blank" className="social-btn">
           <FaLinkedin className="text-xl" />
         </a>
 
-        <a href="https://x.com/MdShukurMahmud3" target="_blank" className="w-12 h-12 flex items-center justify-center bg-white dark:bg-gray-800 rounded-full shadow-lg hover:bg-secondary hover:text-primary transition-all">
-          <FaTwitter className="text-xl" />
+        <a href="https://web.facebook.com/lm.nosib" target="_blank" className="social-btn">
+          <FaFacebook className="text-xl" />
         </a>
       </motion.div>
     </section>

@@ -18,7 +18,7 @@ const Projects = () => {
       description: "Buy & Sell New & Used Products Online with SWAP X Marketplace.",
       tech: ["Next.js","React",,"Node.js", "Tailwind", "Firebase","Express.js",
     "MongoDB", "Tailwind"],
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800",
+      image: "https://i.ibb.co.com/MDh2bvNZ/ONLINE-SELLING-SITES.jpg",
       github: "https://github.com/nosib55/swapx-clint.git",
       live: "https://swapx-clint-2cmx.vercel.app/"
     },
@@ -28,7 +28,7 @@ const Projects = () => {
       tech: ["React", "JavaScript","Node.js",
     "Express.js",
     "MongoDB", "Tailwind", "Firebase"],
-      image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800",
+      image: "https://i.ibb.co.com/pvJzfJzC/toy-store-main-new.png",
       github: "https://github.com/nosib55/toytopia-app-.git",
       live: "https://toy-topia-bd7f7.web.app/"
     },
@@ -36,7 +36,7 @@ const Projects = () => {
       title: "Eco Track",
       description: "Eco Track helps users monitor their eco-friendly activities ",
       tech: ["React", "JavaScript","Node.js", "MongoDB","Express.js","Firebase", "Tailwind"],
-      image: "https://i.ibb.co.com/dwYMP3NZ/istockphoto-1313532517-612x612.jpg",
+      image: "https://i.ibb.co.com/bMQ8HWgc/original.png",
       github: "https://github.com/nosib55/eco-track-client.git",
       live: "https://eco-track-bd.netlify.app/"
     },
@@ -50,7 +50,7 @@ const Projects = () => {
     "React Icons",
     "Recharts",
     "REST APIs"],
-      image: "https://images.unsplash.com/photo-1557821552-17105176677c?w=800",
+      image: "https://i.ibb.co.com/FLGmJnVT/privacy-security-c7ffaiitglg2-large-2x.jpg",
       github: "https://github.com/nosib55/hero-app.git",
       live: "https://hero-app-dot.netlify.app/"
     }

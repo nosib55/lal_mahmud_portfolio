@@ -91,11 +91,13 @@ function Navbar() {
   const [activeSection, setActiveSection] = useState("home")
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
+  // ⭐ NEW ORDER → Projects before Skills
   const menuItems = [
     { id: "home", label: "Home" },
     { id: "about", label: "About" },
+    { id: "projects", label: "Projects" },  // ⬅ moved up
     { id: "skills", label: "Skills" },
-    { id: "projects", label: "Projects" },
+    { id: "education", label: "Education" },
     { id: "contact", label: "Contact" },
   ]
 
@@ -137,7 +139,7 @@ function Navbar() {
 
       <nav className="flex justify-between items-center">
 
-        {/* LOGO — Uses Selected Style */}
+        {/* LOGO */}
         {LogoStyles[LOGO_STYLE]}
 
         {/* DESKTOP MENU */}
@@ -165,7 +167,7 @@ function Navbar() {
             </motion.button>
           ))}
 
-          {/* Resume Button */}
+          {/* RESUME BUTTON */}
           <motion.a
             href="https://drive.google.com/file/d/1V9qRg1yO4WaErXI6OKtBH2haYObFCgj3/view?usp=sharing"
             target="_blank"
@@ -198,6 +200,7 @@ function Navbar() {
                        rounded-2xl p-5 shadow-xl"
           >
             <div className="flex flex-col gap-3">
+
               {menuItems.map((item, index) => (
                 <motion.button
                   key={item.id}
@@ -225,6 +228,7 @@ function Navbar() {
               >
                 Resume
               </motion.a>
+
             </div>
           </motion.div>
         )}

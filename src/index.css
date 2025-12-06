@@ -65,3 +65,8 @@
   animation: fireflyGlow 3s infinite ease-in-out;
   animation-delay: calc(-1s * var(--random));
 }
+.orbit-item {
+  @apply absolute w-12 h-12 flex items-center justify-center
+  bg-white/10 text-white rounded-full shadow-lg
+  hover:bg-secondary hover:text-primary transition-all;
+}

@@ -1,0 +1,126 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #0D2426;
+  --color-secondary: #AEFF72;
+  --color-accent: #00C6FF;
+  --color-background-light: #F3F4F6;
+  --color-background-dark: #0D2426;
+
+  --font-display: "Poppins", sans-serif;
+
+  --radius-default: 1rem;
+
+  --animate-spin-slow: spin 10s linear infinite;
+}
+
+/* Enable class-based dark mode in Tailwind 4 */
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: #F3F4F6;
+  --foreground: #171717;
+}
+
+.dark {
+  --background: #0D2426;
+  --foreground: #ededed;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #AEFF72 0%, #00C6FF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
+/* Swiper Custom Styles */
+.projects-swiper {
+  padding: 20px 0 60px 0;
+}
+
+.projects-swiper .swiper-button-next,
+.projects-swiper .swiper-button-prev {
+  background: #AEFF72;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  color: #0D2426;
+  transition: all 0.3s ease;
+}
+
+.projects-swiper .swiper-button-next:hover,
+.projects-swiper .swiper-button-prev:hover {
+  background: #0D2426;
+  color: #AEFF72;
+  transform: scale(1.1);
+}
+
+.projects-swiper .swiper-button-next::after,
+.projects-swiper .swiper-button-prev::after {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.projects-swiper .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background: #0D2426;
+  opacity: 0.3;
+  transition: all 0.3s ease;
+}
+
+.projects-swiper .swiper-pagination-bullet-active {
+  background: #AEFF72;
+  opacity: 1;
+  width: 30px;
+  border-radius: 6px;
+}
+
+@keyframes fireflyGlow {
+  0% {
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+    opacity: 0.6;
+  }
+
+  30% {
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.8);
+    opacity: 1;
+  }
+
+  50% {
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+    opacity: 0.7;
+  }
+
+  80% {
+    box-shadow: 0 0 30px rgba(255, 255, 255, 1);
+    opacity: 1;
+  }
+
+  100% {
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+    opacity: 0.5;
+  }
+}
+
+.firefly {
+  animation: fireflyGlow 3s infinite ease-in-out;
+  animation-delay: calc(-1s * var(--random));
+}
+
+.orbit-item {
+  @apply absolute w-12 h-12 flex items-center justify-center bg-white/10 text-white rounded-full shadow-lg transition-all;
+}
+
+.orbit-item:hover {
+  @apply bg-secondary text-primary;
+}
